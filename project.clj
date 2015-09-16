@@ -16,7 +16,7 @@
     [prismatic/schema "1.0.1"] ; Dependency of om-tools https://github.com/Prismatic/schema
     [prismatic/plumbing "0.4.4"] ; Dependency of om-tools https://github.com/Prismatic/plumbing
     [prismatic/om-tools "0.3.12"] ; Tools for Om https://github.com/Prismatic/om-tools
-    [secretary "2.0.0.1-260a59"] ; Client-side router https://github.com/gf3/secretary
+    [secretary "2.0.0.1-c5d774"] ; Client-side router https://github.com/gf3/secretary
     [cljs-react-test "0.1.3-SNAPSHOT" :exclusions [cljsjs/react]] ; React test utilities https://github.com/bensu/cljs-react-test
     [prismatic/dommy "1.1.0"] ; DOM manipulation and event library https://github.com/Prismatic/dommy
     [cljs-flux "0.1.2"] ; Flux implementation for Om https://github.com/kgann/cljs-flux
@@ -25,6 +25,7 @@
     [noencore "0.1.21"] ; Clojure & ClojureScript functions not in core https://github.com/r0man/noencore
     [org.clojure.bago/cljs-dynamic-resources "0.0.3"] ; Dynamically load JavaScript and CSS https://github.com/bago2k4/cljs-dynamic-resources
     [shodan "0.4.2"] ; A ClojureScript library providing wrappers for the JavaScript console API. https://github.com/noprompt/shodan
+    [venantius/accountant "0.2-SNAPSHOT"] ; ClojureScript navigation handler https://github.com/venantius/accountant
   ]
 
   :plugins [
