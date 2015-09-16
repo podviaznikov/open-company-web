@@ -19,7 +19,8 @@
               [cljs.core.async :refer [put! chan <!]]
               [open-company-web.router :as router]
               [dommy.core :refer-macros [sel1]]
-              [open-company-web.components.user-selector :refer [user-selector]]))
+              [open-company-web.components.user-selector :refer [user-selector]]
+              [secretary.core :as secretary]))
 
 (defn create-new-report [owner company-data new-year new-period]
   (let [ticker (:symbol company-data)
@@ -50,7 +51,9 @@
           ; create the report on the server
           (api/save-or-create-report ticker new-year new-period {:finances {}})))
       ; navigate to the new report
-      (router/nav! (str "/companies/" ticker "/reports/" new-year "/" new-period "/edit")))))
+      (open-company-web.core/dispatch! (str "/companies/" ticker "/reports/" new-year "/" new-period "/edit"))
+      ; (router/nav! (str "/companies/" ticker "/reports/" new-year "/" new-period "/edit"))
+      )))
 
 (defn sort-reports [el1 el2]
   (let [el1-year (str (:year el1))
@@ -103,7 +106,7 @@
                 (n/nav-item {
                   :key "summary"
                   :href url
-                  :on-click (fn [e] (.preventDefault e) (router/nav! url))
+                  ; :on-click (fn [e] (.preventDefault e) (router/nav! url))
                   :class (if is-summary "active" "")
                   } "Summary"))
 
@@ -117,7 +120,7 @@
                   (n/nav-item {
                     :key rep-key
                     :href link
-                    :on-click (fn [e] (.preventDefault e) (router/nav! link))
+                    ; :on-click (fn [e] (.preventDefault e) (router/nav! link))
                     :class (if (= (name report-key) rep-key) "active" "")
                     } (str (utils/get-period-string rep-period) " " rep-year))))
 

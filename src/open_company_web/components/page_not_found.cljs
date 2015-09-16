@@ -8,4 +8,4 @@
   (render [_]
     (dom/div
       (dom/h1 "Page not found")
-      (om/build link {:href "/" :name "Home"}))))
+      (dom/a {:href "/companies" :alt "Home"} "Home"))))

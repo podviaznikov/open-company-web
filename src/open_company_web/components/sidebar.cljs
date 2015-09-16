@@ -25,16 +25,18 @@
         (dom/ul {:class "nav nav-sidebar"}
           ; profile
           (dom/li {:class (if is-profile "active" "")}
-            (om/build link {:href profile-url :name "Profile"}))
+            (dom/a {:href profile-url :alt "Profile"} "Profile"))
           ; organization
           (dom/li {:class (if is-organization "active" "")}
-            (om/build link {:href organization-url :name "Organization"}))
+            (dom/a {:href organization-url :alt "Organization"} "Organization"))
           ; equity
           (dom/li {:class (if is-equity "active" "")}
-            (om/build link {:href equity-url :name "Equity"}))
+            (dom/a {:href equity-url :alt "Equity"} "Equity"))
           ; agreements
           (dom/li {:class (if is-agreements "active" "")}
-            (om/build link {:href agreements-url :name "Agreements"}))
+            (dom/a {:href agreements-url :alt "Agreements"} "Agreements"))
           ; reports
           (dom/li {:class (if is-report "active" "")}
-            (om/build link {:href reports-url :name "Reports"})))))))
+            (dom/a {:href reports-url :alt "Reports"} "Reports"))
+          (dom/li {:class ""}
+            (dom/a {:href "http://localhost:3449/test" :alt "Reports"} "Reports")))))))

@@ -10,11 +10,12 @@
   (render [_]
     (n/navbar {:inverse? true :fixed-top? true :fluid true :collapse? true}
       (dom/div {:class "navbar-header"}
-        (om/build link {
+        (dom/a {
           :class "navbar-brand"
           :href (str "/companies/" (:ticker @router/path))
-          :name (str (:ticker @router/path) " - " (:name data))}))
+          :alt (str (:ticker @router/path) " - " (:name data))}
+               (str (:ticker @router/path) " - " (:name data))))
       (dom/div {:id "navbar" :class "navbar-collapse collapse"}
         (dom/ul {:class "nav navbar-nav navbar-right"}
           (dom/li nil
-            (om/build link {:href "/logout" :name "Logout"})))))))
+            (dom/a {:href "/logout" :alt "Logout"} "Logout")))))))

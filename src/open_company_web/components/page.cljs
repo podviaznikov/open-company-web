@@ -38,4 +38,4 @@
               :else
               (dom/div
                 (dom/h2 (str (:ticker @router/path) " not found"))
-                (om/build link {:href "/" :name "Back home"})))))))))
+                (dom/a {:href "/" :alt "Back home"} "Back home")))))))))

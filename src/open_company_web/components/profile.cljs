@@ -39,25 +39,29 @@
             (n/nav-item {
               :key 1
               :href url
-              :onClick (fn[e] (.preventDefault e) (router/nav! url))}
+              ; :onClick (fn[e] (.preventDefault e) (router/nav! url))
+              }
               "Company"))
           (let [url (str "/companies/" ticker "#team")]
             (n/nav-item {
               :key 2
               :href url
-              :onClick (fn[e] (.preventDefault e) (router/nav! url))}
+              ; :onClick (fn[e] (.preventDefault e) (router/nav! url))
+              }
               "Team"))
           (let [url (str "/companies/" ticker "#products")]
             (n/nav-item {
               :key 3
               :href url
-              :onClick (fn[e] (.preventDefault e) (router/nav! url))}
+              ; :onClick (fn[e] (.preventDefault e) (router/nav! url))
+              }
               "Products / Services"))
           (let [url (str "/companies/" ticker "#funding")]
             (n/nav-item {
               :key 4
               :href url
-              :onClick (fn[e] (.preventDefault e) (router/nav! url))}
+              ; :onClick (fn[e] (.preventDefault e) (router/nav! url))
+              }
               "Funding")))
         (case (om/get-state owner :selected-tab)
 
