@@ -9,7 +9,8 @@
             [open-company-web.lib.raven :refer [raven-setup]]
             [open-company-web.dispatcher :refer [app-state]]
             [open-company-web.api :as api]
-            [goog.events :as events])
+            [goog.events :as events]
+            [accountant.core :as accountant])
   (:import [goog.history EventType]))
 
 (enable-console-print!)
@@ -77,23 +78,18 @@
                                  report-route
                                  not-found-route]))
 
-    (defn handle-url-change [e]
-      ;; we are checking if this event is due to user action,
-      ;; such as click a link, a back button, etc.
-      ;; as opposed to programmatically setting the URL with the API
-      (when-not (.-isNavigation e)
-        ;; in this case, we're setting it so
-        ;; let's scroll to the top to simulate a navigation
-        (js/window.scrollTo 0 0))
-      ;; dispatch on the token
-      (dispatch! (router/get-token)))))
+    (def route-locator!
+      (secretary/route-locator [list-page-route
+                                 company-profile-route
+                                 report-summary-route
+                                 report-editable-route
+                                 report-route
+                                 not-found-route]))
 
-(defonce history
-  (doto (router/make-history)
-    (events/listen EventType.NAVIGATE
-      ;; wrap in a fn to allow live reloading
-      #(handle-url-change %))
-    (.setEnabled true)))
+    ; initialize accountant to handle token changes and link clicks
+    (accountant/configure-navigation! dispatch! route-locator!)
+    ; dispatche the token
+    (dispatch! (router/get-token))))
 
 (defn on-js-reload []
   ;; optionally touch your app-state to force rerendering depending on
