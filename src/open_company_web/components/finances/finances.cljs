@@ -75,6 +75,9 @@
           needs-runway (some #(contains? % :runway) finances-row-data)]
       (dom/div {:class "section-container row" :id "section-finances"}
         (dom/div {:class "finances"}
+          (om/build update-footer {:updated-at (:updated-at finances-data)
+                                     :author (:author finances-data)
+                                     :section :finances})
           (om/build editable-title {:read-only read-only
                                     :section-data finances-data
                                     :section :finances
@@ -110,14 +113,15 @@
 
               "runway"
               (om/build runway subsection-data))
-            (om/build update-footer {:updated-at (:updated-at finances-data)
-                                     :author (:author finances-data)
-                                     :section :finances})
             (when (and (not read-only) (not (nil? notes-data)) (not (nil? (:body notes-data))))
-              (om/build rich-editor {:read-only read-only
-                                     :section-data notes-data
-                                     :section :finances
-                                     :save-channel "save-finances-notes"}))
+              (dom/div {}
+                (om/build update-footer {:updated-at (:updated-at notes-data)
+                                         :author (:author notes-data)
+                                         :section :notes})
+                (om/build rich-editor {:read-only read-only
+                                       :section-data notes-data
+                                       :section :finances
+                                       :save-channel "save-finances-notes"})))
             (om/build revisions-navigator {:revisions (:revisions finances-data)
                                            :section :finances
                                            :updated-at (:updated-at finances-data)
