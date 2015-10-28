@@ -2,7 +2,6 @@
   (:require [om.core :as om :include-macros true]
             [om-tools.core :as om-core :refer-macros [defcomponent]]
             [om-tools.dom :as dom :include-macros true]
-            [open-company-web.components.update-footer :refer (update-footer)]
             [open-company-web.lib.utils :as utils]
             [cljs-dynamic-resources.core :as cdr]))
 
@@ -121,8 +120,4 @@
                                        (set-editing! owner false)
                                        (utils/handle-change section-data value :body)
                                        (utils/save-values (:save-channel data))))
-                         } "SAVE"))
-          (when (not no-data)
-            (om/build update-footer {:author (:author section-data)
-                                     :updated-at (:updated-at section-data)
-                                     :section section})))))))
+                         } "SAVE")))))))
