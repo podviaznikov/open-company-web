@@ -11,6 +11,7 @@
             [open-company-web.api :refer [save-or-create-section]]
             [open-company-web.lib.utils :as utils]
             [open-company-web.components.revisions-navigator :refer [revisions-navigator]]
+            [open-company-web.components.update-footer :refer [update-footer]]
             [cljs.core.async :refer [put! chan <!]]
             [open-company-web.dispatcher :as dispatcher]))
 
@@ -39,6 +40,9 @@
       (if (:loading company-data)
         (dom/h4 {} "Loading data...")
         (dom/div {:class "simple-section section-container" :id (str "section-" (name section))}
+          (om/build update-footer {:author (:author section-data)
+                                   :updated-at (:updated-at section-data)
+                                   :section section})
           (om/build editable-title {:read-only read-only
                                     :section-data section-data
                                     :section section
