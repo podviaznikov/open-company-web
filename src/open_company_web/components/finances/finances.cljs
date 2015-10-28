@@ -113,15 +113,15 @@
 
               "runway"
               (om/build runway subsection-data))
-            (when (and (not read-only) (not (nil? notes-data)) (not (nil? (:body notes-data))))
-              (dom/div {}
-                (om/build update-footer {:updated-at (:updated-at notes-data)
-                                         :author (:author notes-data)
-                                         :section :notes})
-                (om/build rich-editor {:read-only read-only
-                                       :section-data notes-data
-                                       :section :finances
-                                       :save-channel "save-finances-notes"})))
+            (when (and notes-data (:author notes-data) (:updated-at notes-data))
+                  (om/build update-footer {:updated-at (:updated-at notes-data)
+                                           :author (:author notes-data)
+                                           :section :notes}))
+            (when (and (not read-only) notes-data (:body notes-data))
+              (om/build rich-editor {:read-only read-only
+                                     :section-data notes-data
+                                     :section :finances
+                                     :save-channel "save-finances-notes"}))
             (om/build revisions-navigator {:revisions (:revisions finances-data)
                                            :section :finances
                                            :updated-at (:updated-at finances-data)
