@@ -610,8 +610,13 @@ div.simple-section-revisions-navigator{
 
 div.revisions-navigator{
   width: 100%;
-  height: 34px;
-  margin-top: 30px;
+  height: 44px;
+  padding-top: 20px;
+}
+
+div.revisions-navigator div.revisions-navigator-left,
+div.revisions-navigator div.revisions-navigator-right{
+  height: 27px;
 }
 
 div.revisions-navigator div.revisions-navigator-left{
@@ -696,6 +701,20 @@ div.revisions-navigator div.revisions-navigator-right div.double-next{
   margin-left: 10px;
 }
 
+div.section-container div.single-prev,
+div.section-container div.single-next,
+div.section-container div.double-prev,
+div.section-container div.double-next{
+  display: none;
+}
+
+div.section-container:hover div.single-prev,
+div.section-container:hover div.single-next,
+div.section-container:hover div.double-prev,
+div.section-container:hover div.double-next{
+  display: inline;
+}
+
 hr.section-separator{
   background-color: rgba(0, 0, 0, 0.2);
   width: 600px;
@@ -773,4 +792,11 @@ button.oc-btn.oc-success{
 
 button.oc-btn.oc-cancel{
   color: rgba(0, 0, 0, 0.4);
+}
+
+div.section-container{
+  position: relative;
+  width: 600px;
+  margin-left: -300px;
+  left: 50%;
 }
