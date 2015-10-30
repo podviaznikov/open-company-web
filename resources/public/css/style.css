@@ -1,7 +1,7 @@
 /* some style */
 
 html, body{
-  font-family: "proxima-nova", sans-serif;
+  font-family: "Lora", serif;
 }
 
 a{
@@ -228,6 +228,7 @@ span img.user-icon{
 }
 
 div.finances h2.finances-edit-title{
+  font-family: "Open Sans", sans-serif;
   text-align: left;
   position: relative;
   width: 600px;
@@ -350,9 +351,11 @@ div.rich-editor-container div.fake-rich-editor p{
 }
 
 div.rich-editor-container div.rich-editor h1,
+div.rich-editor-container div.rich-editor h2,
 div.rich-editor-container div.rich-editor h3{
   font-weight: 600;
-   font-size: 24px; 
+  font-size: 24px; 
+  font-family: "Open Sans", sans-serif;
 }
 
 div.rich-editor-container div.rich-editor.no-data{
@@ -489,7 +492,7 @@ div.editable-title-container span.hidden-span{
   text-align: left;
   color: #2D2D2D !important;
   font-size: 36px;
-  font-family: inherit;
+  font-family: "Open Sans", sans-serif;
   font-weight: 600;
   line-height: 1.1;
   color: inherit;
