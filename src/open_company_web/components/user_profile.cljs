@@ -28,5 +28,5 @@
               (dom/button {:class "btn btn-danger"
                            :on-click (fn [e]
                                        (cook/remove-cookie! :jwt)
-                                       (router/nav! "/login"))}
+                                       (set! (.-location js/document) "/login"))}
                           "Log Out"))))))))

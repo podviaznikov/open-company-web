@@ -24,10 +24,7 @@
             bd-radius (utils/px (int (/ av-size 2)))]
         (dom/div {:class (utils/class-set {:company-avatar true
                                            :navbar-brand (:navbar-brand data)})}
-          (dom/a {:href company-home
-                  :on-click (fn [e]
-                              (.preventDefault e)
-                              (router/nav! company-home))}
+          (dom/a {:href company-home}
             (dom/div {:class "company-avatar-img"
                       :style {:width px-size
                               :height px-size

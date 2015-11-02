@@ -16,10 +16,7 @@
           px-size (utils/px av-size)
           bd-radius (utils/px (int (/ av-size 2)))]
       (dom/div {:class "user-avatar"}
-        (dom/a {:href "/profile"
-                :on-click (fn [e]
-                            (.preventDefault e)
-                            (router/nav! "/profile"))}
+        (dom/a {:href "/profile"}
           (dom/img {:class "user-avatar-img"
                     :style {:width px-size
                             :height px-size
