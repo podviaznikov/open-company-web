@@ -12,6 +12,19 @@
             [clojure.string :as str]
             [open-company-web.lib.utils :as utils]))
 
+(defcomponent company-profile-container [data owner]
+  (render [_]
+    (let [slug (:slug @router/path)
+          company-data ((keyword slug) data)]
+      (dom/div {:class "company-container container"}
+        (om/build navbar company-data)
+        (dom/div {:class "container-fluid"}
+          (dom/div {:class "col-md-12 main"}
+            (if (:loading data)
+              (dom/div
+                (dom/h4 "Loading data..."))
+              (om/build company-profile data))))))))
+
 (defcomponent company [data owner]
   (render [_]
     (let [slug (:slug @router/path)
@@ -34,13 +47,10 @@
                     section-data (section company-data)]
                 (om/build section-selector {:section-data section-data :section section}))
 
-              (utils/in? (:route @router/path) "profile")
-              (om/build company-profile data)
-
               (and (not (contains? data :loading)) (contains? data (keyword slug)))
               (om/build all-sections data)
 
               :else
               (dom/div
                 (dom/h2 (str (:slug @router/path) " not found"))
-                (om/build link {:href "/" :name "Back home"})))))))))
+                (dom/a {:href "/"} "Back home")))))))))
